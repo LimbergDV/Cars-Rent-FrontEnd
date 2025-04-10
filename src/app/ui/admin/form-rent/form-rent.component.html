@@ -1,0 +1,30 @@
+<div class="form-container">
+  <h2>Formulario de Alta de Renta</h2>
+  <form>
+    <div class="form-group">
+      <label for="carSelect">Seleccionar Carro</label>
+      <select id="carSelect" name="carSelect" required>
+        <option value="" disabled selected>Selecciona un carro</option>
+        <option value="carro1">Carro 1</option>
+        <option value="carro2">Carro 2</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="clientSelect">Seleccionar Cliente</label>
+      <select id="clientSelect" name="clientSelect" required>
+        <option value="" disabled selected>Selecciona un cliente</option>
+        <option value="cliente1">Cliente 1</option>
+        <option value="cliente2">Cliente 2</option>
+        <option value="cliente3">Cliente 3</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="deliveryDate">Fecha de Entrega</label>
+      <input type="date" id="deliveryDate" name="deliveryDate" required />
+    </div>
+
+    <button type="submit">Registrar Renta</button>
+  </form>
+</div>

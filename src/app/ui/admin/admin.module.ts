@@ -7,6 +7,8 @@ import { FormCarsComponent } from './form-cars/form-cars.component';
 import { FormCustomersComponent } from './form-customers/form-customers.component';
 import { PageCustomersComponent } from './page-customers/page-customers.component';
 import { TableCustomerComponent } from './table-customer/table-customer.component';
+import { TableCarsComponent } from './table-cars/table-cars.component';
+import { FormRentComponent } from './form-rent/form-rent.component';
 
 
 
@@ -18,7 +20,9 @@ import { TableCustomerComponent } from './table-customer/table-customer.componen
     FormCarsComponent,
     FormCustomersComponent,
     PageCustomersComponent,
-    TableCustomerComponent
+    TableCustomerComponent,
+    TableCarsComponent,
+    FormRentComponent
   ],
   imports: [
     CommonModule

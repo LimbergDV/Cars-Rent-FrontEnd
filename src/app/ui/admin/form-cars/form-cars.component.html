@@ -1,28 +1,42 @@
-<h1 class="header-title">Formulario de Alta de Carros</h1>
+<div class="form-container">
+  <h2>Formulario de Alta de Carros</h2>
+  <form>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input type="text" id="brand" name="brand" required />
+    </div>
 
-<div class="table-container">
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th scope="col" class="first-header">Brand</th>
-        <th scope="col" class="a">Model</th>
-        <th scope="col" class="a">Year</th>
-        <th scope="col" class="a">Type Car</th>
-        <th scope="col" class="a">Plate Number</th>
-        <th scope="col" class="a">Price per Day</th>
-        <th scope="col" class="last-header">Available</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="text" placeholder="Brand" /></td>
-        <td><input type="text" placeholder="Model" /></td>
-        <td><input type="number" placeholder="Year" /></td>
-        <td><input type="text" placeholder="Type of Car" /></td>
-        <td><input type="text" placeholder="Plate Number" /></td>
-        <td><input type="number" placeholder="Price per Day" /></td>
-        <td><input type="checkbox" /> Available</td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input type="text" id="model" name="model" required />
+    </div>
+
+    <div class="form-group">
+      <label for="year">Year</label>
+      <input type="number" id="year" name="year" required />
+    </div>
+
+    <div class="form-group">
+      <label for="typeCar">Type of Car</label>
+      <input type="text" id="typeCar" name="typeCar" required />
+    </div>
+
+    <div class="form-group">
+      <label for="plateNumber">Plate Number</label>
+      <input type="text" id="plateNumber" name="plateNumber" required />
+    </div>
+
+    <div class="form-group">
+      <label for="priceDay">Price per Day</label>
+      <input type="number" id="priceDay" name="priceDay" required />
+    </div>
+
+    <div class="form-group">
+      <label for="available">Available</label>
+      <input type="checkbox" id="available" name="available" />
+    </div>
+
+    <button type="submit">Registrar Carro</button>
+  </form>
 </div>
+

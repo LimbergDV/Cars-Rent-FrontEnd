@@ -31,7 +31,7 @@ label {
   color: #555;
 }
 
-input {
+select, input {
   width: 100%;
   padding: 0.7rem 1rem;
   border: 1px solid #ccc;
@@ -39,7 +39,7 @@ input {
   transition: border-color 0.3s;
 }
 
-input:focus {
+select:focus, input:focus {
   border-color: #007bff;
   outline: none;
 }
