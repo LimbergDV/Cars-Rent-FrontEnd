@@ -1,31 +1,33 @@
 <div class="form-container">
-  <h2>Formulario de Alta de Carros</h2>
-  <form>
+  <h2>{{ isEditMode ? 'Editar Cliente' : 'Formulario de Alta de Clientes' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" required />
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="customer.first_name" required />
     </div>
 
     <div class="form-group">
       <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" required />
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="customer.last_name" required />
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email" [(ngModel)]="customer.email" required />
     </div>
 
     <div class="form-group">
       <label for="phoneNumber">Phone Number</label>
-      <input type="text" id="phoneNumber" name="phoneNumber" required />
+      <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="customer.phone_number" required />
     </div>
 
     <div class="form-group">
       <label for="numberLicense">Number License</label>
-      <input type="text" id="numberLicense" name="numberLicense" required />
+      <input type="text" id="numberLicense" name="numberLicense" [(ngModel)]="customer.number_license" required />
     </div>
 
-    <button type="submit">Registrar Carro</button>
+    <button type="submit">{{ isEditMode ? 'Actualizar' : 'Registrar Cliente' }}</button>
+    <button type="button" (click)="resetForm()">Cancelar</button>
   </form>
 </div>

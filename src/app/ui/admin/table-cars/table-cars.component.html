@@ -2,6 +2,7 @@
   <table class="styled-table">
     <thead>
       <tr>
+        <th scope="col" class="a">Id</th>
         <th scope="col" class="first-header">Brand</th>
         <th scope="col" class="a">Model</th>
         <th scope="col" class="a">Year</th>
@@ -9,10 +10,42 @@
         <th scope="col" class="a">Plate Number</th>
         <th scope="col" class="a">Price per Day</th>
         <th scope="col" class="last-header">Available</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Aquí irán las filas con los datos -->
+      <tr *ngFor="let car of cars">
+        <td>{{ car.Id }}</td> <!-- Si decides mostrar el ID -->
+        <td>{{ car.Brand }}</td>
+        <td>{{ car.Model }}</td>
+        <td>{{ car.Year }}</td>
+        <td>{{ car.Type_Car }}</td>
+        <td>{{ car.Plate_number }}</td>
+        <td>{{ car.Price_day | currency }}</td>
+        <td>{{ car.Available ? 'Yes' : 'No' }}</td>
+        <td>
+          <button class="button is-link" (click)="selectCar(car)">Update</button>
+          <button class="button is-danger" (click)="deleteCar(car.Id)">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
+</div>
+
+<div *ngIf="selectedCar" class="edit-form">
+  <h3 class="text-edit-car">Update Car</h3>
+  <form (ngSubmit)="updateCar()">
+    <input class="input" [(ngModel)]="selectedCar.Brand" name="brand" placeholder="Brand" required />
+<input class="input" [(ngModel)]="selectedCar.Model" name="model" placeholder="Model" required />
+<input class="input" [(ngModel)]="selectedCar.Year" name="year" placeholder="Year" type="number" required />
+<input class="input" [(ngModel)]="selectedCar.Type_Car" name="type_car" placeholder="Type of Car" required />
+<input class="input" [(ngModel)]="selectedCar.Plate_number" name="plate_number" placeholder="Plate Number" required />
+<input class="input" [(ngModel)]="selectedCar.Price_day" name="price_day" placeholder="Price per Day" type="number" required />
+<select class="input" [(ngModel)]="selectedCar.Available" name="available" required>
+  <option [ngValue]="true">Available</option>
+  <option [ngValue]="false">Not Available</option>
+</select>
+    <button class="button accept-changes-car" type="submit">Save Changes</button>
+    <button class="button cancel-changes-car" type="button" (click)="selectedCar = null">Cancel</button>
+  </form>
 </div>

@@ -9,6 +9,7 @@ import { PageCustomersComponent } from './page-customers/page-customers.componen
 import { TableCustomerComponent } from './table-customer/table-customer.component';
 import { TableCarsComponent } from './table-cars/table-cars.component';
 import { FormRentComponent } from './form-rent/form-rent.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -25,7 +26,8 @@ import { FormRentComponent } from './form-rent/form-rent.component';
     FormRentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

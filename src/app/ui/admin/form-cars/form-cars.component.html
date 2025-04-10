@@ -1,42 +1,42 @@
 <div class="form-container">
   <h2>Formulario de Alta de Carros</h2>
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="brand">Brand</label>
-      <input type="text" id="brand" name="brand" required />
+      <input type="text" id="brand" name="brand" required [(ngModel)]="car.Brand"/>
     </div>
 
     <div class="form-group">
       <label for="model">Model</label>
-      <input type="text" id="model" name="model" required />
+      <input type="text" id="model" name="model" required [(ngModel)]="car.Model"/>
     </div>
 
     <div class="form-group">
       <label for="year">Year</label>
-      <input type="number" id="year" name="year" required />
+      <input type="number" id="year" name="year" required [(ngModel)]="car.Year"/>
     </div>
 
     <div class="form-group">
       <label for="typeCar">Type of Car</label>
-      <input type="text" id="typeCar" name="typeCar" required />
+      <input type="text" id="typeCar" name="typeCar" required [(ngModel)]="car.Type_Car"/>
     </div>
 
     <div class="form-group">
       <label for="plateNumber">Plate Number</label>
-      <input type="text" id="plateNumber" name="plateNumber" required />
+      <input type="text" id="plateNumber" name="plateNumber" required [(ngModel)]="car.Plate_number"/>
     </div>
 
     <div class="form-group">
       <label for="priceDay">Price per Day</label>
-      <input type="number" id="priceDay" name="priceDay" required />
+      <input type="number" id="priceDay" name="priceDay" required [(ngModel)]="car.Price_day"/>
     </div>
 
     <div class="form-group">
       <label for="available">Available</label>
-      <input type="checkbox" id="available" name="available" />
+      <input type="checkbox" id="available" name="available" [(ngModel)]="car.Available"/>
     </div>
 
-    <button type="submit">Registrar Carro</button>
+    <button type="submit"[disabled]="!car.Type_Car || !car.Plate_number || !car.Price_day || !car.Year || !car.Model || !car.Brand">Registrar Carro</button>
   </form>
 </div>
 
