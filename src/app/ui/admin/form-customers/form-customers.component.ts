@@ -3,86 +3,50 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../core/customers/services/customer.service';
 import Swal from 'sweetalert2';
 import { Customer } from '../../../core/customers/models/customer';
+import { AddCustomerUseCase } from '../../../core/customers/use-cases/add-customer.use_case';
+import { showSuccessMessage } from '../../helpers/modals/modasl';
 
 @Component({
   selector: 'app-form-customers',
   templateUrl: './form-customers.component.html',
   styleUrls: ['./form-customers.component.css']
 })
-export class FormCustomersComponent implements OnInit {
+export class FormCustomersComponent{
   customers: Customer[] = [];
+
   customer: Customer = {
-    id_customer: 0,
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone_number: '',
-    number_license: ''
+    Id: 0,
+    First_Name: '',
+    Last_name: '',
+    Email: '',
+    Phone_number: '',
+    Number_license: ''
   };
-  isEditMode = false;
 
-  constructor(private customerService: CustomerService) {}
 
-  ngOnInit(): void {
-    this.loadCustomers();
-  }
+  constructor(private createCustomer: AddCustomerUseCase) {}
 
-  loadCustomers(): void {
-    this.customerService.getAllCustomers().subscribe(data => {
-      this.customers = data;
-    });
-  }
 
   onSubmit(): void {
-    if (this.isEditMode) {
-      this.customerService.updateCustomer(this.customer).subscribe(() => {
-        this.loadCustomers();
-        this.resetForm();
-        Swal.fire('Actualizado', 'Cliente actualizado correctamente', 'success');
-      });
-    } else {
-      this.customerService.createCustomer(this.customer).subscribe(() => {
-        this.loadCustomers();
-        this.resetForm();
-        Swal.fire('Registrado', 'Cliente registrado correctamente', 'success');
-      });
-    }
-  }
-
-  editCustomer(customer: Customer): void {
-    this.customer = { ...customer };
-    this.isEditMode = true;
-  }
-
-  deleteCustomer(id: number): void {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¡No podrás revertir esta acción!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.customerService.deleteCustomer(id).subscribe(() => {
-          this.loadCustomers();
-          Swal.fire('Eliminado', 'Cliente eliminado correctamente', 'success');
-        });
+      if(this.customer.First_Name && this.customer.Last_name && this.customer.Email && this.customer.Phone_number && this.customer.Number_license) {
+        this.createCustomer.run(this.customer).subscribe(
+          () => {
+            showSuccessMessage('¡Registro exitoso!', 'El cliente ha sido registrado correctamente.')
+            this.resetForm()
+          },
+          (error) => {
+            console.log('Error al registrar el producto:', error);
+          }
+        )
       }
-    });
-  }
-
-  resetForm(): void {
-    this.customer = {
-      id_customer: 0,
-      first_name: '',
-      last_name: '',
-      email: '',
-      phone_number: '',
-      number_license: ''
-    };
-    this.isEditMode = false;
+    }
+    private resetForm(): void {
+      this.customer = {  Id: 0,
+        First_Name: '',
+        Last_name: '',
+        Email: '',
+        Phone_number: '',
+        Number_license: ''
+    }
   }
 }

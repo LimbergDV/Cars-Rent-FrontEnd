@@ -1,33 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { map, Observable } from 'rxjs';
 import { Customer } from '../models/customer';
-import { Observable } from 'rxjs';
+import { CustomerRepository } from '../repositories/customers.repository';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
-  private _apiUrl = 'http://localhost:8081/customers';
+export class CustomerService extends CustomerRepository {
+  private apiUrl = 'http://localhost:8081/customers/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+      super();
+    }
 
-  //Métodos para el crud completo de CUSTOMERS
+    getCustomers(): Observable<Customer[]> {
+      return this.http.get<{clientes: Customer[]}>(this.apiUrl).pipe(
+        map(response => response.clientes)
+      );
+    }
 
-  createCustomer(customer: Customer): Observable<Customer>{
-    console.log(customer);
+    addCustomer(Customer: Customer): Observable<void> {
+      return this.http.post<void>(this.apiUrl, Customer);
+    }
 
-    return this.http.post<Customer>(`${this._apiUrl}/`, customer);
-  }
+    deleteCustomer(id: number): Observable<void>{
+      const url = `${this.apiUrl}${id}`;
+      return this.http.delete<void>(url);
+    }
 
-  getAllCustomers(): Observable<Customer[]>{
-    return this.http.get<Customer[]>(`${this._apiUrl}/`);
-  }
+    updateCustomer(id: number, Customer: Customer): Observable<void>{
+      const url = `${this.apiUrl}${id}`;
+      return this.http.put<void>(url, Customer);
+    }
 
-  updateCustomer(customer:Customer): Observable<Customer>{
-    return this.http.put<Customer>(`${this._apiUrl}/${customer.id_customer}`, customer);
-  }
-
-  deleteCustomer(id:number): Observable<void>{
-    return this.http.delete<void>(`${this._apiUrl}/${id}`);
-  }
+    getCustomerById(id: number): Observable<Customer>{
+      const url = `${this.apiUrl}${id}`;
+      return this.http.get<Customer>(url);
+    }
 }

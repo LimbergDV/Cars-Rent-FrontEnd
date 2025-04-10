@@ -9,12 +9,35 @@
         <th scope="col" class="a">Email</th>
         <th scope="col" class="a">Phone Number</th>
         <th scope="col" class="a">Number License</th>
-        <th scope="col" class="last-header">Detalles</th>
+        <th scope="col" class="last-header">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Los datos se agregarán aquí dinámicamente -->
+      <tr *ngFor="let customer of customers">
+        <td>{{ customer.First_Name }}</td>
+        <td>{{ customer.Last_name }}</td>
+        <td>{{ customer.Email }}</td>
+        <td>{{ customer.Phone_number }}</td>
+        <td>{{ customer.Number_license }}</td>
+        <td>
+          <button class="button is-link" (click)="selectCustomer(customer)">Update</button>
+          <button class="button is-danger" (click)="deleteCustomer(customer.Id)">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 
+<div *ngIf="selectedCustomer" class="edit-form">
+  <h3 class="text-edit-customer">Update Customer</h3>
+  <form (ngSubmit)="updateCustomer()">
+    <input class="input" [(ngModel)]="selectedCustomer.First_Name" name="firstName" placeholder="First Name" required />
+    <input class="input" [(ngModel)]="selectedCustomer.Last_name" name="lastName" placeholder="Last Name" required />
+    <input class="input" type="email" [(ngModel)]="selectedCustomer.Email" name="email" placeholder="Email" required />
+    <input class="input" [(ngModel)]="selectedCustomer.Phone_number" name="phone" placeholder="Phone Number" required />
+    <input class="input" [(ngModel)]="selectedCustomer.Number_license" name="license" placeholder="License Number" required />
+
+    <button class="button accept-changes" type="submit">Save Changes</button>
+    <button class="button cancel-changes" type="button" (click)="selectedCustomer = null">Cancel</button>
+  </form>
+</div>

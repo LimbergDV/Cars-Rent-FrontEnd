@@ -1,8 +1,8 @@
 export interface Customer {
-  id_customer?: number,
-  first_name: string,
-	last_name: string,
-	email: string,
-	phone_number: string,
-	number_license: string
+    Id: number;
+    First_Name: string;
+    Last_name: string;
+    Email: string;
+    Phone_number: string;
+    Number_license: string;
 }
