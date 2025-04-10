@@ -1,0 +1,159 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+aside {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 5.25rem;
+  background: white;
+  box-shadow: 3px 0 5px rgba(0, 0, 0, 0.184);
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 20;
+}
+
+aside.expanded {
+  width: 205px;
+}
+
+.sidebar-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.top-icons,
+.bottom-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bottom-icons {
+  margin-top: auto;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-left: 1.5vh;
+  cursor: pointer;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+nav ul li img {
+  width: 30px;
+  height: 30px;
+}
+
+nav ul li span {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease-in-out, width 0.3s ease-in-out;
+  font-size: 17px;
+}
+
+aside.expanded nav ul li span {
+  opacity: 1;
+  width: auto;
+}
+
+@media (max-width: 1024px) {
+  aside {
+    width: 5.25rem;
+  }
+
+  aside.expanded {
+    width: 160px;
+  }
+
+  nav ul li img {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav ul li span {
+    font-size: 15px;
+  }
+
+  .sidebar-toggle {
+    height: 80px;
+  }
+
+  aside.expanded {
+    width: 187px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  aside {
+    width: 3.5rem;
+  }
+
+  aside.expanded {
+    width: 155px;
+  }
+
+  nav ul li img {
+    width: 25px;
+    height: 25px;
+  }
+
+  nav ul li {
+    padding: 14px;
+    margin-left: 0;
+  }
+
+  nav ul li span {
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  aside {
+    width: 3.25rem;
+  }
+
+  aside.expanded {
+    width: 138px;
+  }
+
+  nav ul li img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .sidebar-toggle {
+    height: 70px;
+  }
+
+  nav ul li {
+    padding: 10px;
+    margin-left: .8vh;
+  }
+
+  nav ul li span {
+    font-size: 12px;
+  }
+
+}

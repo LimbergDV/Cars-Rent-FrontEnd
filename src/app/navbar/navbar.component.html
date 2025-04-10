@@ -1,0 +1,25 @@
+<aside [class.expanded]="isExpanded">
+  <div class="sidebar-toggle" (click)="toggleSidebar()">
+    <img src="assets/codex_menu.svg" alt="Toggle" />
+  </div>
+  <nav>
+    <ul class="top-icons">
+      <li>
+        <img src="assets/home.svg" alt="Dashboard" routerLink="/home" />
+        <span routerLink="/users">Usuarios</span>
+      </li>
+      <li>
+        <img src="assets/stats.svg" alt="Stats" />
+        <span routerLink="/cars">Carros</span>
+      </li>
+      <li>
+        <img
+          src="assets/notification.svg"
+          alt="Notifications"
+          routerLink="/notifications"
+        />
+        <span routerLink="/rents">Rentas de <br> carros</span>
+      </li>
+    </ul>
+  </nav>
+</aside>
